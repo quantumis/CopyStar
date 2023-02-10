@@ -79,11 +79,11 @@ class AdminController extends Controller
     }
 
     public function showOrder(Request $req){
-        if($req->filter == null ){
+        if($req->filter == null || $req->filter == "null"){
             $orders = \App\Models\Cart::orderBy('created_at', 'desc')->where('status', '!=', 1)->get();
         }
         else{
-                $orders = \App\Models\Cart::where('status', $req->filter)->where('status', '!=', 1)->get();
+                $orders = \App\Models\Cart::orderBy('created_at', 'desc')->where('status', $req->filter)->where('status', '!=', 1)->get();
         }
 
         return view('admin-orders', ["orders" => $orders]);
@@ -93,6 +93,15 @@ class AdminController extends Controller
         $orders = \App\Models\Cart::where('id_basket', $id)->get();
         foreach($orders as $o){
             $o->status = 3;
+            $o->save();
+        }
+        return redirect('/admin/orders');
+    }
+
+    public function orderReject($id){
+        $orders = \App\Models\Cart::where('id_basket', $id)->get();
+        foreach($orders as $o){
+            $o->status = 0;
             $o->save();
         }
         return redirect('/admin/orders');

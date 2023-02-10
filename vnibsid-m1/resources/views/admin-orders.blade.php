@@ -6,6 +6,7 @@
         <div>
             <form action="/public/admin/orders" class="d-flex justify-content-end filters">
                 <select name="filter" id="filter">
+                    <option value="null">Все</option>
                     <option value="2">Новые</option>
                     <option value="3">Подтвержденные</option>
                     <option value="0">Отмененные</option>
@@ -28,8 +29,8 @@
                     <td>{{$o->Product->name}}</td>
                     <td>{{$o->count}}</td>
                     <td>{{$o->Product->price * $o->count}}</td>
-                    <td><a href="/public/admin/order/success/{{$o->id_basket}}" class="btn btn-success">Подтвердить</a></td>
-                    <td><a href="/public/admin/order/reject/{{$o->id_basket}}" class="btn btn-danger">Отклонить</a></td>
+                    @if($o->status == 3) @else<td><a href="/public/admin/order/success/{{$o->id_basket}}" class="btn btn-success">Подтвердить</a></td>@endif
+                    @if($o->status == 0) @else<td><a href="/public/admin/order/reject/{{$o->id_basket}}" class="btn btn-danger">Отклонить</a></td>@endif
                 </tr>
             @endforeach
         </table>
