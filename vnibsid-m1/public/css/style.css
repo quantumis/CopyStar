@@ -1,0 +1,158 @@
+.br-img{
+    border-radius: 20px;
+}
+
+.desc{
+    font-size: 26px;
+}
+
+.title{
+    margin-bottom: 50px;
+    font-size: 48px;
+}
+
+.wow{
+    font-weight: bold;
+    color: rgb(230, 63, 63);
+    text-decoration: underline;
+    font-style: italic;
+}
+
+.tdn{
+    text-decoration: none;
+}
+
+.nav-a{
+    color: black;
+    margin-left: 20px;
+    font-size: 17px;
+}
+
+.nav-a:hover{
+    color: black;
+    opacity: .75;
+}
+
+.logo-text{
+    font-size: 24px !important;
+}
+
+.filters{
+    margin-bottom: 30px;
+}
+
+.filters>select{
+    margin-right: 10px;
+}
+
+.my-card{
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.block-img{
+    height: 380px;
+    overflow: hidden;
+}
+
+.block-img:hover img{
+    transform: scale(1.1);
+}
+
+.block-img img{
+    width: 100%;
+    height: 100%;
+    transition: .7s;
+}
+
+.pr-desc{
+    font-size: 18px;
+}
+
+.price{
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.main-contacts{
+    font-size: 28px;
+}
+
+.list-contact>li{
+    font-size: 22px;
+    margin-bottom: 15px;
+}
+
+.social a{
+ text-decoration: none;
+ color: black;
+ font-size: 24px;
+transition: .7s;
+}
+
+.table p{
+    font-size: 18px;
+}
+
+.table a{
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    border-radius: 50px;
+    transition: .7s;
+}
+
+.minus{
+    background: red;
+    padding: 5px 12px;
+}
+
+.plus{
+    background: green;
+    padding: 5px 10px;
+}
+
+.table a:hover{
+    color: black;
+}
+
+.slider{
+    width: 500px;
+}
+
+.sl-item img{
+    display: flex;
+    justify-content: center;
+    margin: auto 0;
+}
+
+.arrow{
+    font-size: 42px;
+    cursor: pointer;
+}
+
+.cat-table tr td p{
+    font-size: 16px;
+}
+
+.cat-table tr td{
+    padding-right: 20px;
+}
+
+.cat-table{
+    margin-bottom: 50px;
+}
+
+.img-td img{
+    width: 500px;
+}
+
+.product-add input{
+    width: 600px;
+    height: 40px;
+    margin-bottom: 20px;
+}
+
+.inp-desc{
+    width: 100px;
+}
