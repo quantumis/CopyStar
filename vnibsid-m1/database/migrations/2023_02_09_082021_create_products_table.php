@@ -19,8 +19,8 @@ return new class extends Migration
             $table->integer('price');
             $table->integer('year');
             $table->string('photo');
-            $table->integer('country');
-            $table->integer('model');
+            $table->string('country');
+            $table->string('model');
             $table->integer('count');
             $table->integer('id_cat');
             $table->timestamps();
