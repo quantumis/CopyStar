@@ -6,7 +6,6 @@
         <div>
             <form action="/public/admin/orders" class="d-flex justify-content-end filters">
                 <select name="filter" id="filter">
-                    <option value="null">Все</option>
                     <option value="2">Новые</option>
                     <option value="3">Подтвержденные</option>
                     <option value="0">Отмененные</option>
@@ -14,25 +13,31 @@
                 <button type="submit" class="btn btn-primary">Применить</button>
             </form>
         </div>
+        @foreach($orders as $key => $order)
+        <div>
+            <p>Пользователь: {{$key}}</p>
+        </div>
+        @foreach($order as $key => $ord)
+        <div>
+            <p>Заказ №{{$key}}</p>
+        </div>
         <table class="w-100">
             <tr>
-                <td>Пользователь</td>
-                <td>Номер заказа</td>
                 <td>Товар</td>
                 <td>Кол-во</td>
                 <td>Сумма</td>
             </tr>
-            @foreach ($orders as $o)
+            @foreach($ord as $o)
                 <tr>
-                    <td>{{$o->User->login}}</td>
-                    <td>{{$o->id_basket}}</td>
                     <td>{{$o->Product->name}}</td>
                     <td>{{$o->count}}</td>
                     <td>{{$o->Product->price * $o->count}}</td>
-                    @if($o->status == 3) @else<td><a href="/public/admin/order/success/{{$o->id_basket}}" class="btn btn-success">Подтвердить</a></td>@endif
-                    @if($o->status == 0) @else<td><a href="/public/admin/order/reject/{{$o->id_basket}}" class="btn btn-danger">Отклонить</a></td>@endif
+                    @if($o->status != 2) @else<td><a href="/public/admin/order/success/{{$o->id_basket}}" class="btn btn-success">Подтвердить</a></td>@endif
+                    @if($o->status != 2) @else<td><a href="/public/admin/order/reject/{{$o->id_basket}}" class="btn btn-danger">Отклонить</a></td>@endif
                 </tr>
             @endforeach
         </table>
+        @endforeach
+        @endforeach
     </div>
 @endsection

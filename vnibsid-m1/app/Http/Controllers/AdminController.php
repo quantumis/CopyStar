@@ -44,7 +44,7 @@ class AdminController extends Controller
         $prod->country = $req->country;
         $prod->model = $req->model;
         $prod->count = $req->count;
-        $prod->year = $req->count;
+        $prod->year = $req->year;
         $prod->photo = $req->photo;
         $prod->id_cat = $req->category;
         $prod->save();
@@ -79,14 +79,20 @@ class AdminController extends Controller
     }
 
     public function showOrder(Request $req){
-        if($req->filter == null || $req->filter == "null"){
+        if($req->filter == null){
             $orders = \App\Models\Cart::orderBy('created_at', 'desc')->where('status', '!=', 1)->get();
         }
         else{
-                $orders = \App\Models\Cart::orderBy('created_at', 'desc')->where('status', $req->filter)->where('status', '!=', 1)->get();
+            $orders = \App\Models\Cart::orderBy('created_at', 'desc')->where('status', $req->filter)->where('status', '!=', 1)->get();
         }
 
-        return view('admin-orders', ["orders" => $orders]);
+        $buffer = [];
+
+        foreach($orders as $order){
+            $buffer[$order->User->login][$order->id_basket][]  = $order;
+        }
+
+        return view('admin-orders', ["orders" => $buffer]);
     }
 
     public function orderSuccess($id){

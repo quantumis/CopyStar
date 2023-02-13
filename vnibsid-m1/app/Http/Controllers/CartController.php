@@ -91,6 +91,10 @@ class CartController extends Controller
 
     public function showOrders(){
         $orders = \App\Models\Cart::where('status', 2)->latest()->get();
-        return view('orders', ["orders" => $orders]);
+        $buffer = [];
+        foreach($orders as $o){
+            $buffer[$o->id_basket][] = $o;
+        }
+        return view('orders', ["orders" => $buffer]);
     }
 }

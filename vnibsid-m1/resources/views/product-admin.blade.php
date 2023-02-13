@@ -5,12 +5,13 @@
         <h1 class="title">Управление товарами</h1>
         <table class="cat-table">
             @foreach ($product as $p)
-                <tr>
-                    <td><p class="m-0">{{$p->id}}.</p></td>
+                <tr class="tr-bottom">
+                    <td><p class="m-0">{{$loop->iteration}}.</p></td>
                     <td><p class="m-0">{{$p->name}}</p></td>
                     <td><p class="m-0">{{$p->price}}</p></td>
                     <td><p class="m-0">{{$p->country}}</p></td>
                     <td><p class="m-0">{{$p->model}}</p></td>
+                    <td><p class="m-0">{{$p->Category->name}}</p></td>
                     <td><p class="m-0">{{$p->year}}</p></td>
                     <td><p class="m-0">{{$p->count}}</p></td>
                     <td class="img-td"><img src="/public/img/{{$p->photo}}" alt="{{$p->photo}}"></td>
