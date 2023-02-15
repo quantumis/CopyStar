@@ -77,9 +77,17 @@ class CartController extends Controller
     public function pay($id, Request $req){
         if(Hash::check($req->pass, Auth::user()->password)){
             $pay_c = \App\Models\Cart::where('id_basket', $id)->get();
+            $pay_p = [];
             foreach($pay_c as $p){
+                $pay_p[$p->id_product] = $p->count;
                 $p->status = 2;
                 $p->save();
+            }
+
+            foreach($pay_p as $key => $p){
+                $buffer = \App\Models\Product::find($key);
+                $buffer->count -= $p;
+                $buffer->save();
             }
 
             return redirect('/catalog');
@@ -90,11 +98,26 @@ class CartController extends Controller
     }
 
     public function showOrders(){
-        $orders = \App\Models\Cart::where('status', 2)->latest()->get();
+        $orders = \App\Models\Cart::where('id_user', Auth::user()->id)->where("status", "!=", 1)->latest()->get();
         $buffer = [];
         foreach($orders as $o){
             $buffer[$o->id_basket][] = $o;
         }
         return view('orders', ["orders" => $buffer]);
+    }
+
+    public function deleteOrders($id){
+        $order = \App\Models\Cart::where('id_user', Auth::user()->id)->where("id_basket", $id)->get();
+        $products = [];
+        foreach($order as $o){
+            $products[$o->id_product] = $o->count;
+            $o->delete();
+        }
+        foreach($products as $key => $p){
+            $buffer = \App\Models\Product::find($key);
+            $buffer->count += $p;
+            $buffer->save();
+        }
+        return redirect('/order');
     }
 }

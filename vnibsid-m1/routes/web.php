@@ -24,9 +24,7 @@ Route::get('/catalog', [App\Http\Controllers\ProductController::class, 'showCata
 
 Route::get('/product/{id}', [App\Http\Controllers\ProductController::class, 'product']);
 
-Route::get('/where', function () {
-    return view('where');
-});
+Route::get('/where', function () {return view('where');});
 
 Route::get('/cart/add/{id}', [App\Http\Controllers\CartController::class, 'add']);
 
@@ -39,6 +37,8 @@ Route::get('/cart/minus/{id}', [App\Http\Controllers\CartController::class, 'min
 Route::get('/cart/pay/{id}', [App\Http\Controllers\CartController::class, 'pay']);
 
 Route::get('/order', [App\Http\Controllers\CartController::class, 'showOrders']);
+
+Route::get('/order/delete/{id}', [App\Http\Controllers\CartController::class, 'deleteOrders']);
 
 
 Route::get('/admin', function () {
@@ -66,6 +66,6 @@ Route::get('/admin/product/edit/{id}', [App\Http\Controllers\AdminController::cl
 
 Route::get('/admin/product/delete/{id}', [App\Http\Controllers\AdminController::class, 'prodDelete']);
 
-Route::get('/admin/order/success/{id}', [App\Http\Controllers\AdminController::class, 'orderSuccess']);
+Route::get('/admin/order/success/{user}/{id}', [App\Http\Controllers\AdminController::class, 'orderSuccess']);
 
-Route::get('/admin/order/reject/{id}', [App\Http\Controllers\AdminController::class, 'orderReject']);
+Route::get('/admin/order/reject/{user}/{id}', [App\Http\Controllers\AdminController::class, 'orderReject']);

@@ -20,9 +20,9 @@
                 <button type="submit" class="btn btn-primary">Применить</button>
             </form>
         </div>
-        <div class="row">
+        <div class="row row-products">
             @foreach ($products as $p)
-                <div class="col-lg-4">
+                <div class="col-lg-4 products-elem" ajax="{{$p->name}}">
                     <div class="card my-card">
                         <a href="/public/product/{{$p->id}}">
                             <div class="block-img"><img src="/public/img/{{$p->photo}}" alt="{{$p->photo}}" class="img-fluid img-plus"></div>
@@ -39,5 +39,7 @@
                 </div>
             @endforeach
         </div>
+        <div class="result"></div>
     </div>
+    <script src="/public/js/ajax.js"></script>
 @endsection

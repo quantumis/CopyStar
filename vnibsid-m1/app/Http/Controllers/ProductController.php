@@ -18,6 +18,7 @@ class ProductController extends Controller
                 $products = \App\Models\Product::orderBy($req->filter, 'desc')->where('id_cat', $req->category)->where('count', '!=', 0)->get();
             }
         }
+
         $category = \App\Models\Category::all();
         return view('catalog', ["products" => $products, "category" => $category]);
     }

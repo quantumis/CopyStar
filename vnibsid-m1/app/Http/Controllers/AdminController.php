@@ -79,7 +79,7 @@ class AdminController extends Controller
     }
 
     public function showOrder(Request $req){
-        if($req->filter == null){
+        if($req->filter == null || $req->filter == 'null'){
             $orders = \App\Models\Cart::orderBy('created_at', 'desc')->where('status', '!=', 1)->get();
         }
         else{
@@ -89,14 +89,14 @@ class AdminController extends Controller
         $buffer = [];
 
         foreach($orders as $order){
-            $buffer[$order->User->login][$order->id_basket][]  = $order;
+            $buffer[$order->User->surname." ".$order->User->name." ".$order->User->patronymic][$order->id_basket][]  = $order;
         }
 
         return view('admin-orders', ["orders" => $buffer]);
     }
 
-    public function orderSuccess($id){
-        $orders = \App\Models\Cart::where('id_basket', $id)->get();
+    public function orderSuccess($user, $id){
+        $orders = \App\Models\Cart::where('id_user', $user)->where('id_basket', $id)->get();
         foreach($orders as $o){
             $o->status = 3;
             $o->save();
@@ -104,11 +104,19 @@ class AdminController extends Controller
         return redirect('/admin/orders');
     }
 
-    public function orderReject($id){
-        $orders = \App\Models\Cart::where('id_basket', $id)->get();
+    public function orderReject($user, $id){
+        $orders = \App\Models\Cart::where('id_user', $user)->where('id_basket', $id)->get();
+        $buf_order = [];
         foreach($orders as $o){
+            $buf_order[$o->id_product] = $o->count;
             $o->status = 0;
             $o->save();
+        }
+
+        foreach($buf_order as $key => $p){
+            $buffer = \App\Models\Product::find($key);
+            $buffer->count += $p;
+            $buffer->save();
         }
         return redirect('/admin/orders');
     }

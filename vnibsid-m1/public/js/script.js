@@ -15,7 +15,6 @@ function moveright(){
         total[idx].classList.remove('active');
         total[++idx].classList.add('active');
     }
-    console.log("Сюда")
 }
 
 nextarrow.addEventListener("click", moveleft);
@@ -30,5 +29,4 @@ function moveleft(){
         total[idx].classList.remove('active');
         total[--idx].classList.add('active');
     }
-    console.log("Туда")
 }

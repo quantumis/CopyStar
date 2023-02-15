@@ -25,4 +25,8 @@ class Cart extends Model
     public function User(){
         return $this->hasOne(User::class, 'id', 'id_user');
     }
+
+    public function Status(){
+        return $this->hasOne(Status::class, 'id', 'status');
+    }
 }
