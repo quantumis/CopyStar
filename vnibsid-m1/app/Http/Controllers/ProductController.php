@@ -7,19 +7,8 @@ use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
 {
-    public function showCatalog(Request $req){
-        if($req->filter == null && $req->category == null){
-            $products = \App\Models\Product::orderBy('created_at', 'desc')->where('count', '!=', 0)->get();
-        }
-        else{
-            if($req->category == "null"){
-                $products = \App\Models\Product::orderBy($req->filter, 'desc')->where('count', '!=', 0)->get();
-            }
-            else{
-                $products = \App\Models\Product::orderBy($req->filter, 'desc')->where('id_cat', $req->category)->where('count', '!=', 0)->get();
-            }
-        }
-
+    public function showCatalog(){
+        $products = \App\Models\Product::orderBy('created_at', 'desc')->where('count', '!=', 0)->get();
         $category = \App\Models\Category::all();
         return view('catalog', ["products" => $products, "category" => $category]);
     }
@@ -34,7 +23,7 @@ class ProductController extends Controller
         return view('about', ["products" => $products]);
     }
 
-    /*BOTTOM IS A API FUNCTIONS*/
+    /*---BOTTOM IS A API FUNCTIONS---*/
 
     public function show(){
         if($_POST["category"] != "empty"){
@@ -62,7 +51,7 @@ class ProductController extends Controller
                         </a>
                         <div><p class="pr-desc"><strong>'.$product->name.'</strong></p></div>
                         <div class="d-flex align-items-center justify-content-between">';
-                if(Auth::check()){
+                if(!Auth::guest()){
                     $str.= '<a href="/public/cart/add/'.$product->id.'" class="btn btn-danger">Купить</a>';
                 }else{  }
         
@@ -73,4 +62,6 @@ class ProductController extends Controller
         }
         echo $str;
     }
+
+    /*-------------------------------*/
 }
