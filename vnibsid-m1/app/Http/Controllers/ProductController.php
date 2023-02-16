@@ -51,9 +51,11 @@ class ProductController extends Controller
                         </a>
                         <div><p class="pr-desc"><strong>'.$product->name.'</strong></p></div>
                         <div class="d-flex align-items-center justify-content-between">';
-                if(!Auth::guest()){
+                if($_POST["auth"] == 1){
                     $str.= '<a href="/public/cart/add/'.$product->id.'" class="btn btn-danger">Купить</a>';
-                }else{  }
+                }else{ 
+                    
+                 }
         
                 $str.=     '<p class="m-0 price">'.$product->price.' р.</p>
                         </div>

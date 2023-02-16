@@ -28,7 +28,7 @@
                         <div class="d-flex align-items-center justify-content-between">
                             @guest
                             @else
-                            <a href="/public/cart/add/{{$p->id}}" class="btn btn-danger">Купить</a>
+                                <a href="/public/cart/add/{{$p->id}}" class="btn btn-danger" id="pay-btn">Купить</a>
                             @endguest
                             <p class="m-0 price">{{$p->price}} p.</p>
                         </div>
