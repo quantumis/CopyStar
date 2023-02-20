@@ -5,7 +5,7 @@
         <h1 class="title">Где нас найти?</h1>
         <div class="row">
             <div class="col-lg-7">
-                <img src="/public/img/map.jpg" alt="map.jpg" class="img-fluid">
+                <img src="/img/map.jpg" alt="map.jpg" class="img-fluid">
             </div>
             <div class="col-lg-5 d-flex flex-column justify-content-between">
                 <div>

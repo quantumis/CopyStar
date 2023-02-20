@@ -8,7 +8,7 @@
             <h2>Заказ №{{$o[0]->id_basket}}</h2>
             <div class="d-flex">
                 <p class="status-name">Статус заказа: {{$o[0]->Status->name}}</p>
-                @if($o[0]->status == 2)<a href="/public/order/delete/{{$o[0]->id_basket}}" class="btn btn-danger max-h-40">Удалить заказ</a>@endif
+                @if($o[0]->status == 2)<a href="/order/delete/{{$o[0]->id_basket}}" class="btn btn-danger max-h-40">Удалить заказ</a>@endif
             </div>
         </div>
         @foreach($o as $oo)

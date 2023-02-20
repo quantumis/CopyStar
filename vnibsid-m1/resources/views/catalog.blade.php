@@ -21,14 +21,14 @@
             @foreach ($products as $p)
                 <div class="col-lg-4 products-elem">
                     <div class="card my-card">
-                        <a href="/public/product/{{$p->id}}">
-                            <div class="block-img"><img src="/public/img/{{$p->photo}}" alt="{{$p->photo}}" class="img-fluid img-plus"></div>
+                        <a href="/product/{{$p->id}}">
+                            <div class="block-img"><img src="/img/{{$p->photo}}" alt="{{$p->photo}}" class="img-fluid img-plus"></div>
                         </a>
                         <div><p class="pr-desc"><strong>{{$p->name}}</strong></p></div>
                         <div class="d-flex align-items-center justify-content-between">
                             @guest
                             @else
-                                <a href="/public/cart/add/{{$p->id}}" class="btn btn-danger" id="pay-btn">Купить</a>
+                                <a href="/cart/add/{{$p->id}}" class="btn btn-danger" id="pay-btn">Купить</a>
                             @endguest
                             <p class="m-0 price">{{$p->price}} p.</p>
                         </div>
@@ -37,5 +37,5 @@
             @endforeach
         </div>
     </div>
-    <script src="/public/js/ajax/ajax-filter.js"></script>
+    <script src="/js/ajax/ajax-filter.js"></script>
 @endsection

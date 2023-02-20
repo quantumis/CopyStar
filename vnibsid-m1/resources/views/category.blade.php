@@ -9,16 +9,16 @@
                     <td><p class="m-0">{{$c->id}}.</p></td>
                     <td><p class="m-0">{{$c->name}}</p></td>
                     <td>
-                        <form action="/public/admin/category/edit/{{$c->id}}">
+                        <form action="/admin/category/edit/{{$c->id}}">
                             <input type="text" name="new_name">
                             <button type="submit" class="btn btn-primary">Изменить</a>
                         </form>
                     </td>
-                    <td><a href="/public/admin/category/delete/{{$c->id}}" class="btn btn-danger">Удалить</a></td>
+                    <td><a href="/admin/category/delete/{{$c->id}}" class="btn btn-danger">Удалить</a></td>
                 </tr>
             @endforeach
         </table>
-        <form action="/public/admin/category/add">
+        <form action="/admin/category/add">
             <input type="text" name="cat_name">
             <button class="btn btn-success" type="submit">Добавить категорию</button>
         </form>

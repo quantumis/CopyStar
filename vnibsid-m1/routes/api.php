@@ -18,5 +18,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('/catalog', [App\Http\Controllers\ProductController::class, 'show']);
+Route::get('/catalog/{category}/{sort}/{auth}', [App\Http\Controllers\ProductController::class, 'show']);
 

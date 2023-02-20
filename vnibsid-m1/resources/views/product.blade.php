@@ -5,7 +5,7 @@
         <h1 class="title">{{$product->name}}</h1>
         <div class="row">
             <div class="col-lg-6">
-                <div><img src="/public/img/{{$product->photo}}" alt="{{$product->photo}}" class="img-fluid"></div>
+                <div><img src="/img/{{$product->photo}}" alt="{{$product->photo}}" class="img-fluid"></div>
             </div>
             <div class="col-lg-6">
                 <p>Характеристики</p>
@@ -21,7 +21,7 @@
 
                 @guest
                 @else
-                <div><a href="/public/cart/add/{{$product->id}}" class="btn btn-danger">Купить</a></div>
+                <div><a href="/cart/add/{{$product->id}}" class="btn btn-danger">Купить</a></div>
                 @endguest
             </div>
         </div>

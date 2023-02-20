@@ -4,7 +4,7 @@
     <div class="container">
         <h1 class="title">Управление заказами</h1>
         <div>
-            <form action="/public/admin/orders" class="d-flex justify-content-end filters">
+            <form action="/admin/orders" class="d-flex justify-content-end filters">
                 <select name="filter" id="filter">
                     <option value="2">Новые</option>
                     <option value="3">Подтвержденные</option>
@@ -23,8 +23,8 @@
             <p class="order-order">Заказ №{{$key}}</p>
             @if($ord[0]->status == 2)<hr>@endif
             <div class="d-flex">
-                @if($ord[0]->status != 2) @else<a href="/public/admin/order/success/{{$ord[0]->id_user}}/{{$key}}" class="btn btn-success max-h-40 mt-auto mb-auto">Подтвердить</a>@endif
-                @if($ord[0]->status != 2) @else<a href="/public/admin/order/reject/{{$ord[0]->id_user}}/{{$key}}" class="btn btn-danger max-h-40 mt-auto mb-auto">Отклонить</a>@endif
+                @if($ord[0]->status != 2) @else<a href="/admin/order/success/{{$ord[0]->id_user}}/{{$key}}" class="btn btn-success max-h-40 mt-auto mb-auto">Подтвердить</a>@endif
+                @if($ord[0]->status != 2) @else<a href="/admin/order/reject/{{$ord[0]->id_user}}/{{$key}}" class="btn btn-danger max-h-40 mt-auto mb-auto">Отклонить</a>@endif
             </div>
         </div>
         <table class="w-100">

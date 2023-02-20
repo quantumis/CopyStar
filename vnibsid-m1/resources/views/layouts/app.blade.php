@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="csrf-token" content="{{ csrf_token() }}" id="csrf-key">
 
     <title>True Games</title>
 
@@ -13,7 +13,7 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
 
-    <link rel="stylesheet" href="/public/css/style.css">
+    <link rel="stylesheet" href="/css/style.css">
 
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
@@ -32,9 +32,9 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
-                        <li><a href="/public/" class="tdn nav-a">О нас</a></li>
-                        <li><a href="/public/catalog" class="tdn nav-a">Каталог</a></li>
-                        <li><a href="/public/where" class="tdn nav-a">Где нас найти</a></li>
+                        <li><a href="/" class="tdn nav-a">О нас</a></li>
+                        <li><a href="/catalog" class="tdn nav-a">Каталог</a></li>
+                        <li><a href="/where" class="tdn nav-a">Где нас найти</a></li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -59,10 +59,10 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <a href="/public/cart" class="dropdown-item">Корзина</a>
-                                    <a href="/public/order" class="dropdown-item">Мои заказы</a>
+                                    <a href="/cart" class="dropdown-item">Корзина</a>
+                                    <a href="/order" class="dropdown-item">Мои заказы</a>
                                     @if (Auth::user()->role == 2)
-                                    <a href="/public/admin" class="dropdown-item">Админ-панель</a>
+                                    <a href="/admin" class="dropdown-item">Админ-панель</a>
                                     @endif
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();

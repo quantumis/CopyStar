@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container">
-        <form action="/public/admin/product/edit/{{$product->id}}">
+        <form action="/admin/product/edit/{{$product->id}}">
         <p class="inp-desc">Название</p><input type="text" name="name" value="{{$product->name}}"><br>
             <p class="inp-desc">Цена</p><input type="number" name="price" value="{{$product->price}}"><br>
             <p class="inp-desc">Страна</p><input type="text" name="country" value="{{$product->country}}"><br>

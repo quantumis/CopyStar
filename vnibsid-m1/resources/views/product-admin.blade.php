@@ -14,13 +14,13 @@
                     <td><p class="m-0">{{$p->Category->name}}</p></td>
                     <td><p class="m-0">{{$p->year}}</p></td>
                     <td><p class="m-0">{{$p->count}}</p></td>
-                    <td class="img-td"><img src="/public/img/{{$p->photo}}" alt="{{$p->photo}}"></td>
-                    <td><a href="/public/admin/product/edit/{{$p->id}}" class="btn btn-primary">Изменить</a></td>
-                    <td><a href="/public/admin/product/delete/{{$p->id}}" class="btn btn-danger">Удалить</a></td>
+                    <td class="img-td"><img src="/img/{{$p->photo}}" alt="{{$p->photo}}"></td>
+                    <td><a href="/admin/product/edit/{{$p->id}}" class="btn btn-primary">Изменить</a></td>
+                    <td><a href="/admin/product/delete/{{$p->id}}" class="btn btn-danger">Удалить</a></td>
                 </tr>
             @endforeach
         </table>
-        <form action="/public/admin/product/add" class="product-add">
+        <form action="/admin/product/add" class="product-add">
             <p class="inp-desc">Название</p><input type="text" name="name"><br>
             <p class="inp-desc">Цена</p><input type="number" name="price"><br>
             <p class="inp-desc">Страна</p><input type="text" name="country"><br>
